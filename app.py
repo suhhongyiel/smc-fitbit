@@ -71,6 +71,14 @@ def get_study_ids():
 # 메인 페이지
 def page_about():
     st.title("환자 데이터베이스")
+
+    # 링크로 이동하는 버튼 추가
+    if st.button("테스트 서버로 이동"):
+        st.write("테스트 서버로 이동 중입니다...")
+        st.markdown('<a href="https://testingserver.streamlit.app/" target="_blank">테스트 서버로 이동</a>', unsafe_allow_html=True)
+
+
+
     # Study ID 목록 가져오기
     study_id = get_study_ids()
     st.write(study_id)
@@ -87,11 +95,6 @@ def page_about():
         
         data_display.display_charts(start_date, end_date, id)
     
-    # 링크로 이동하는 버튼 추가
-    if st.button("테스트 서버로 이동"):
-        st.write("테스트 서버로 이동 중입니다...")
-        st.markdown('<a href="https://testingserver.streamlit.app/" target="_blank">테스트 서버로 이동</a>', unsafe_allow_html=True)
-
 
 
 
