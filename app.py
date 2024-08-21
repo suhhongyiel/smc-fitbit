@@ -44,7 +44,7 @@ def login():
         if email == actual_email and password == actual_password:
             st.session_state.logged_in = True
             placeholder.empty()
-            st.experimental_rerun()  # 로그인 성공 시 페이지 새로고침
+            # 로그인 성공 시 페이지를 새로 고침 없이 업데이트합니다.
         else:
             st.session_state.logged_in = False
             st.error("Login failed")
@@ -84,10 +84,7 @@ def page_about():
         
         data_display.display_charts(start_date, end_date, id)
     
-    # 링크로 이동하는 버튼 추가
-    if st.button("테스트 서버로 이동"):
-        st.write("테스트 서버로 이동 중입니다...")
-        st.markdown('<a href="https://testingserver.streamlit.app/" target="_blank">테스트 서버로 이동</a>', unsafe_allow_html=True)
+    st.markdown('<a href="https://testingserver.streamlit.app/" target="_blank">PDF출력 서버로 이동하려면 클릭하세요</a>', unsafe_allow_html=True)
 
 
 
