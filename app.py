@@ -85,10 +85,10 @@ def page_about():
         data_display.display_charts(start_date, end_date, id)
     
     # 링크로 이동하는 버튼 추가
-    if st.button("MoveToPatient"):
-        js = "window.open('https://testingserver.streamlit.app/')"  # JavaScript 코드
-        html = f'<script>{js}</script>'
-        st.markdown(html, unsafe_allow_html=True)
+    if st.button("테스트 서버로 이동"):
+        st.write("테스트 서버로 이동 중입니다...")
+        st.markdown('<a href="https://testingserver.streamlit.app/" target="_blank">테스트 서버로 이동</a>', unsafe_allow_html=True)
+
 
 
 # 메인 함수
