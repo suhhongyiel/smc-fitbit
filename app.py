@@ -23,8 +23,6 @@ import data_display
 
 st.set_page_config(layout="wide")
 
-# https://www.notion.so/visualization-875b2e8a51dc482d896e67743a827274 (내 노션 정리 사이트임)
-
 # 세션 상태 초기화
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
@@ -71,14 +69,6 @@ def get_study_ids():
 # 메인 페이지
 def page_about():
     st.title("환자 데이터베이스")
-
-    # 링크로 이동하는 버튼 추가
-    if st.button("테스트 서버로 이동"):
-        st.write("테스트 서버로 이동 중입니다...")
-        st.markdown('<a href="https://testingserver.streamlit.app/" target="_blank">테스트 서버로 이동</a>', unsafe_allow_html=True)
-
-
-
     # Study ID 목록 가져오기
     study_id = get_study_ids()
     st.write(study_id)
@@ -86,7 +76,6 @@ def page_about():
     selected_study_id = st.selectbox('Select Study ID', study_id)
 
     min_date, max_date, id = data_display.fetch_date_range(selected_study_id)
-    # min_date, max_date, study_id = data_display.fetch_date_range()
 
     if min_date and max_date:
         start_date, end_date = st.date_input("데이터 기간 선택", [min_date, max_date], min_value=min_date, max_value=max_date, key="data_date_range")
@@ -95,7 +84,11 @@ def page_about():
         
         data_display.display_charts(start_date, end_date, id)
     
-
+    # 링크로 이동하는 버튼 추가
+    if st.button("테스트 서버로 이동"):
+        js = "window.open('https://testingserver.streamlit.app/')"  # JavaScript 코드
+        html = f'<script>{js}</script>'
+        st.markdown(html, unsafe_allow_html=True)
 
 
 # 메인 함수
