@@ -82,11 +82,15 @@ def page_about():
     # min_date, max_date, study_id = data_display.fetch_date_range()
 
     if min_date and max_date:
-        start_date, end_date = st.date_input("Select date range for data", [min_date, max_date], min_value=min_date, max_value=max_date, key="data_date_range")
+        start_date, end_date = st.date_input("데이터 기간 선택", [min_date, max_date], min_value=min_date, max_value=max_date, key="data_date_range")
         start_date = start_date[0] if isinstance(start_date, list) else start_date
         end_date = end_date[1] if isinstance(end_date, list) else end_date
-        # data_display.display_patient_data(start_date, end_date)
+        
         data_display.display_charts(start_date, end_date, id)
+    
+    # 링크로 이동하는 버튼 추가
+    if st.button("테스트 서버로 이동"):
+        st.markdown("[테스트 서버로 이동](https://testingserver.streamlit.app/)")
 
 # 메인 함수
 def main():
